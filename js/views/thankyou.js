@@ -48,7 +48,7 @@ window.ProfileView = Backbone.View.extend({
     render: function () {
         var thankyous = this.model.models;
         var profile = this.options.profile;
-
+        
         $(this.el).html(this.template(profile.toJSON()));
 
         _.each(thankyous, function (thankyou) {
@@ -59,7 +59,7 @@ window.ProfileView = Backbone.View.extend({
                 $('.thankyous-received', this.el).append(new ThankYouListItemView({ model: thankyou }).render().el);
 
         }, this);
-
+        
         return this;
     }
 
@@ -88,20 +88,21 @@ window.SearchView = Backbone.View.extend({
     search: function (event) {
         var key = $('.search-key').val();
         var results = [];
-        var thankyous = this.model.models;
+        
+
+        /*var thankyous = this.model.models;
 
         _.each(thankyous, function (thankyou) {
             if (thankyou.get("thankee").toLowerCase().indexOf(key.toLowerCase()) >= 0) {
                 results.push(thankyou);
             }
         });
+        */
 
-        //this.model = results;
-        //this.render(results);
-        $('#myList').html('');
-        this.listView = new ThankYouListView({ el: $('#myList', this.el), model: results });
+        //$('#myList').html('');
+        //{ el: $('#myList', this.el), model: results }
+        this.listView = new ThankYouListView();
         this.listView.render();
-        //$('#myList', this.el).html(new ThankYouListView({ el: $('ul', this.el), model: results }));
 
     }
 

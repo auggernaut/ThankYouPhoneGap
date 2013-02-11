@@ -35,7 +35,7 @@ body {
     -webkit-touch-callout: none;
 }
 
-
+/*
 .body-button {
     font-family: "Museo";
     font-size: 30px;
@@ -53,6 +53,28 @@ body {
     text-shadow: 0 0 10px #fff;
     margin-top: 30px;
 }
+*/
+
+.body-button {
+        display: inline-block;
+        -webkit-border-radius: 12px;
+        -webkit-box-shadow: 2px 2px 3px #999; 
+        border: solid 3px rgb(110,110,110);
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(74,74,74,0.85)), color-stop(0.5, rgba(20,20,20,0.75)), color-stop(0.5, rgba(2,2,2,0.75)), to(rgba(14,14,14,0.75))); 
+        color: #fff;
+        text-shadow: #000 0 1px 0;
+        font-family: "Museo";
+        font-size: 30px;
+        padding: 9px 11px;
+        width: 65%;
+        margin-top: 20px;
+    }
+    .body-button:hover, .body-button.hover {
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(135,148,203,0.85)), color-stop(0.5, rgba(34,56,159,0.75)), color-stop(0.5, rgba(0,27,145,0.75)), to(rgba(2,59,152,0.65)));  
+        color: #fff;
+        text-shadow: #000 0 1px 0;
+        -webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
+    }
 
 #message {
     text-align: center;
@@ -74,34 +96,34 @@ body {
     line-height: 1em;
 }
 
-    .header-button button {
-        pointer-events: none;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
-        min-width: 50px;
-        height: 30px;
-        line-height: 25px;
-        font-weight: bold;
-        font-size: 12px;
-        text-align: center;
-        color: #fff;
-        text-shadow: 0 -1px rgba(0,0,0,.6);
-        padding: 0 4px;
-        margin: 0;
-        text-decoration: none;
-        border-width: 2px 5px;
-        -webkit-border-image: url(images/button.png) 4 10 4 10;
-        -moz-border-image: url(images/button.png) 4 10 4 10;
-        -ms-border-image: url(images/button.png) 4 10 4 10;
-        -o-border-image: url(images/button.png) 4 10 4 10;
-        background: transparent url(images/button-active.png) no-repeat;
-        -webkit-background-size: 0 0;
-        -moz-background-size: 0 0;
-        -ms-background-size: 0 0;
-        -o-background-size: 0 0;
-        background-size: 0 0;
-    }
+.header-button button {
+    pointer-events: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    min-width: 50px;
+    height: 30px;
+    line-height: 25px;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 -1px rgba(0,0,0,.6);
+    padding: 0 4px;
+    margin: 0;
+    text-decoration: none;
+    border-width: 2px 5px;
+    -webkit-border-image: url(images/button.png) 4 10 4 10;
+    -moz-border-image: url(images/button.png) 4 10 4 10;
+    -ms-border-image: url(images/button.png) 4 10 4 10;
+    -o-border-image: url(images/button.png) 4 10 4 10;
+    background: transparent url(images/button-active.png) no-repeat;
+    -webkit-background-size: 0 0;
+    -moz-background-size: 0 0;
+    -ms-background-size: 0 0;
+    -o-background-size: 0 0;
+    background-size: 0 0;
+}
 
 .header-button-icon button {
     min-width: 0;
@@ -445,11 +467,11 @@ body {
 input {
     border: none;
     background: #FFF;
-    width: 94%;
+    width: 95%;
     border-radius: 8px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    margin: 10px;
+
     padding: 5px;
     height: 25px;
     font-size: 20px;
@@ -466,11 +488,10 @@ input {
 textarea {
     border: none;
     background: #FFF;
-    width: 94%;
+    width: 95%;
     border-radius: 8px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    margin: 10px;
     padding: 5px;
     font-size: 20px;
     font-family: "Museo";
@@ -497,21 +518,7 @@ form {
         padding-top: 10px;
     }
 
-    #home button {
-        font-family: "Museo";
-        font-size: 30px;
-        color: #ffffff;
-        padding: 10px 20px;
-        background: -moz-linear-gradient( top, #400C6E 0%, #5F1495);
-        background: -webkit-gradient( linear, left top, left bottom, from(#400C6E), to(#5F1495));
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        border-radius: 10px;
-        border: 1px solid #400C6E;
-        width: 65%;
-        text-shadow: 0 0 10px #fff;
-        margin-bottom: 30px;
-    }
+    
 
 
 #footer {
@@ -546,7 +553,7 @@ h2 {
     color: white;
     margin-bottom: 10px;
     font-family: "Museo";
-    font-size: 20px;
+    font-size: 25px;
     text-shadow: 0 0 10px #000, 0 0 20px #000;
 }
 

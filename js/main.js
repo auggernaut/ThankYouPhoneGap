@@ -14,9 +14,8 @@ window.Router = Backbone.Router.extend({
 
         var self = this;
 
-        this.headerView = new HeaderView();
-        this.footerView = new FooterView();
-        $('#footer').html(this.footerView.render().el);
+        //this.footerView = new FooterView();
+        //$('#footer').html(this.footerView.render().el);
         //console.log("dpd.users: " + dpd.users);
         
         //AUTH
@@ -106,7 +105,9 @@ window.Router = Backbone.Router.extend({
 
     profile: function () {
 
-        var thankYouList = new ThankYouCollection();
+        self.slidePage(new ProfileView());
+
+    /*    var thankYouList = new ThankYouCollection();
         self = this;
 
         thankYouList.fetch({
@@ -123,12 +124,15 @@ window.Router = Backbone.Router.extend({
                     });
                 });
             }
-        });
+        });*/
 
-        this.headerView.select('thankyous-menu');
+        
     },
 
     search: function () {
+
+        self.slidePage(new SearchView());
+/*
         var search = new ThankYouCollection();
         self = this;
         search.fetch({
@@ -137,6 +141,7 @@ window.Router = Backbone.Router.extend({
                 //$("#content").html(this.searchView.el);
             }
         });
+*/
 
     },
 
