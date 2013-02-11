@@ -17,8 +17,7 @@ body {
     height: 100%;
     background-color: #fff;
     position: relative;
-    width: 640px;
-    min-height: 1000px;
+    width: 100%;
 }
 
 .header {
@@ -329,14 +328,14 @@ body {
 }
 
 
-/*#content {
+#content {
     position: absolute;
     background: #ddd;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-}*/
+}
 
 #content-wrapper {
     margin: 10px 20px;
@@ -345,11 +344,10 @@ body {
 .page {
     position: absolute;
     width: 100%;
-    height: 100%;
     background-color: #ddd;
     -webkit-transform: translate3d(0,0,0);
-    background: url("images/Aero-Stream-Purple.jpg") no-repeat;
-    /*http://wallbase.cc/wallpaper/103929
+    /*background: url("images/Aero-Stream-Purple.jpg") no-repeat;
+    http://wallbase.cc/wallpaper/103929
         http://wallpapersus.com/aero-stream-purple/
         */
 }
@@ -490,7 +488,7 @@ form {
     #home h1 {
         text-align: center;
         font-family: "Museo";
-        font-size: 150px;
+        font-size: 70px;
         color: #fff;
         text-shadow: 0 0 10px #000, 0 0 20px #000;
         font-variant: small-caps;
@@ -501,7 +499,7 @@ form {
 
     #home button {
         font-family: "Museo";
-        font-size: 60px;
+        font-size: 30px;
         color: #ffffff;
         padding: 10px 20px;
         background: -moz-linear-gradient( top, #400C6E 0%, #5F1495);
@@ -511,7 +509,6 @@ form {
         border-radius: 10px;
         border: 1px solid #400C6E;
         width: 65%;
-        height: 130px;
         text-shadow: 0 0 10px #fff;
         margin-bottom: 30px;
     }
@@ -521,13 +518,17 @@ form {
     font-size: 10px;
     margin: 0 auto;
     width: 100%;
+    text-align: center;
+            position: absolute;
+    bottom: 0px;
+
 }
 
 footer {
-    text-align: center;
-    position: absolute;
-    bottom: 0px;
+
+
 }
+
 
 #logout {
     font-family: "Museo";
@@ -545,7 +546,7 @@ h2 {
     color: white;
     margin-bottom: 10px;
     font-family: "Museo";
-    font-size: 40px;
+    font-size: 20px;
     text-shadow: 0 0 10px #000, 0 0 20px #000;
 }
 
