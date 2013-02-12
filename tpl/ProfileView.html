@@ -9,7 +9,11 @@
 </div>
 
 <div id="content-wrapper">
-    <div class="profile"><%= username %> : <%= name %> : <%= email %> </div>
+    <div id="profile">
+        <img src="<%= photo %>" id="profileImage" /><h2><%= displayName %></h2>
+        <%= username %><br />
+        <%= email %>
+    </div>
     <h2>Sent</h2>
     <div class="thankyous-sent"></div>
     <h2>Received</h2>

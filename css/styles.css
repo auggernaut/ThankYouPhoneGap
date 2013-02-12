@@ -56,21 +56,22 @@ body {
 */
 
 .body-button {
-        display: inline-block;
-        -webkit-border-radius: 12px;
-        -webkit-box-shadow: 2px 2px 3px #999; 
-        border: solid 3px rgb(110,110,110);
-        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(74,74,74,0.85)), color-stop(0.5, rgba(20,20,20,0.75)), color-stop(0.5, rgba(2,2,2,0.75)), to(rgba(14,14,14,0.75))); 
-        color: #fff;
-        text-shadow: #000 0 1px 0;
-        font-family: "Museo";
-        font-size: 30px;
-        padding: 9px 11px;
-        width: 65%;
-        margin-top: 20px;
-    }
+    display: inline-block;
+    -webkit-border-radius: 12px;
+    -webkit-box-shadow: 2px 2px 3px #999;
+    border: solid 3px rgb(110,110,110);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(74,74,74,0.85)), color-stop(0.5, rgba(20,20,20,0.75)), color-stop(0.5, rgba(2,2,2,0.75)), to(rgba(14,14,14,0.75)));
+    color: #fff;
+    text-shadow: #000 0 1px 0;
+    font-family: "Museo";
+    font-size: 30px;
+    padding: 9px 11px;
+    width: 65%;
+    margin-top: 20px;
+}
+
     .body-button:hover, .body-button.hover {
-        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(135,148,203,0.85)), color-stop(0.5, rgba(34,56,159,0.75)), color-stop(0.5, rgba(0,27,145,0.75)), to(rgba(2,59,152,0.65)));  
+        background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(135,148,203,0.85)), color-stop(0.5, rgba(34,56,159,0.75)), color-stop(0.5, rgba(0,27,145,0.75)), to(rgba(2,59,152,0.65)));
         color: #fff;
         text-shadow: #000 0 1px 0;
         -webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
@@ -102,34 +103,34 @@ body {
     line-height: 1em;
 }
 
-.header-button button {
-    pointer-events: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    min-width: 50px;
-    height: 30px;
-    line-height: 25px;
-    font-weight: bold;
-    font-size: 12px;
-    text-align: center;
-    color: #fff;
-    text-shadow: 0 -1px rgba(0,0,0,.6);
-    padding: 0 4px;
-    margin: 0;
-    text-decoration: none;
-    border-width: 2px 5px;
-    -webkit-border-image: url(images/button.png) 4 10 4 10;
-    -moz-border-image: url(images/button.png) 4 10 4 10;
-    -ms-border-image: url(images/button.png) 4 10 4 10;
-    -o-border-image: url(images/button.png) 4 10 4 10;
-    background: transparent url(images/button-active.png) no-repeat;
-    -webkit-background-size: 0 0;
-    -moz-background-size: 0 0;
-    -ms-background-size: 0 0;
-    -o-background-size: 0 0;
-    background-size: 0 0;
-}
+    .header-button button {
+        pointer-events: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        min-width: 50px;
+        height: 30px;
+        line-height: 25px;
+        font-weight: bold;
+        font-size: 12px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 0 -1px rgba(0,0,0,.6);
+        padding: 0 4px;
+        margin: 0;
+        text-decoration: none;
+        border-width: 2px 5px;
+        -webkit-border-image: url(images/button.png) 4 10 4 10;
+        -moz-border-image: url(images/button.png) 4 10 4 10;
+        -ms-border-image: url(images/button.png) 4 10 4 10;
+        -o-border-image: url(images/button.png) 4 10 4 10;
+        background: transparent url(images/button-active.png) no-repeat;
+        -webkit-background-size: 0 0;
+        -moz-background-size: 0 0;
+        -ms-background-size: 0 0;
+        -o-background-size: 0 0;
+        background-size: 0 0;
+    }
 
 .header-button-icon button {
     min-width: 0;
@@ -477,7 +478,6 @@ input {
     border-radius: 8px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-
     padding: 5px;
     height: 25px;
     font-size: 20px;
@@ -528,7 +528,7 @@ form {
         padding-top: 10px;
     }
 
-    
+
 
 
 #footer {
@@ -536,14 +536,11 @@ form {
     margin: 0 auto;
     width: 100%;
     text-align: center;
-            position: absolute;
+    position: absolute;
     bottom: 0px;
-
 }
 
 footer {
-
-
 }
 
 
@@ -564,13 +561,8 @@ h2 {
     font-size: 25px;
 }
 
-.control-group{
+.control-group {
     margin-top: 20px;
-}
-
-.profile {
-    color: #fff;
-    font-size: 20px;
 }
 
 .thankyou {
@@ -584,4 +576,16 @@ h2 {
 
 .thankyous-sent a {
     text-decoration: none;
+}
+
+
+#profile {
+
+}
+
+#profileImage {
+    width: 100%;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
 }

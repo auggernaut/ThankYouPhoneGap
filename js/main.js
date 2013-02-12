@@ -1,3 +1,4 @@
+var profile = {};
 
 window.Router = Backbone.Router.extend({
 
@@ -17,12 +18,15 @@ window.Router = Backbone.Router.extend({
         //this.footerView = new FooterView();
         //$('#footer').html(this.footerView.render().el);
         //console.log("dpd.users: " + dpd.users);
-        
+
         //AUTH
-        //dpd.users.me(function (result, error) {
-        //    if (!result)
-        //        window.location.replace('../');
-        //});
+        var prof = new Profile({ id: 'cb38d97a895cd85b' });
+
+        prof.fetch({
+            success: function () {
+                profile = prof;
+            }
+        });
 
         // Keep track of the history of pages (we only store the page URL). Used to identify the direction
         // (left or right) of the sliding transition between pages.
@@ -68,19 +72,19 @@ window.Router = Backbone.Router.extend({
         self = this;
 
         self.slidePage(new HomeView());
+
+        /*
+                var prof = new Profile({ id: 0 });
+                    prof.fetch({
+                        success: function () {
                     
-/*
-        var prof = new Profile({ id: 0 });
-            prof.fetch({
-                success: function () {
-            
-                    self.slidePage(new HomeView({ model: prof }));
-                    //$("#content").html(this.homeView.el);
-               }
-            });
-*/
+                            self.slidePage(new HomeView({ model: prof }));
+                            //$("#content").html(this.homeView.el);
+                       }
+                    });
+        */
         //dpd.users.me(function (result, error) {
-            
+
         //});
 
     },
@@ -105,34 +109,22 @@ window.Router = Backbone.Router.extend({
 
     profile: function () {
 
-        self.slidePage(new ProfileView());
-
-    /*    var thankYouList = new ThankYouCollection();
+        var thankYouList = new ThankYouCollection();
         self = this;
 
         thankYouList.fetch({
             success: function () {
-                dpd.users.me(function (result, error) {
 
-                    console.log("Profile UserId: " + result.id);
+                self.slidePage(new ProfileView({ model: thankYouList, profile: profile }));
 
-                    var prof = new Profile({ id: result.id });
-                    prof.fetch({
-                        success: function () {
-                            self.slidePage(new ProfileView({ model: thankYouList, profile: prof }));
-                        }
-                    });
-                });
             }
-        });*/
+        });
 
-        
+
     },
 
     search: function () {
 
-        self.slidePage(new SearchView());
-/*
         var search = new ThankYouCollection();
         self = this;
         search.fetch({
@@ -141,8 +133,6 @@ window.Router = Backbone.Router.extend({
                 //$("#content").html(this.searchView.el);
             }
         });
-*/
-
     },
 
     thankyouDetails: function (id) {

@@ -1,5 +1,5 @@
 
-//Home View
+//************************Home View*************************//
 window.HomeView = Backbone.View.extend({
 
     events: {
@@ -36,7 +36,75 @@ window.HomeView = Backbone.View.extend({
 
 
 
-//Profile View
+
+
+
+//************************Send Views*************************//
+window.SendView = Backbone.View.extend({
+
+    events: {
+        'click #save': 'submit',
+        'click #pickContact': 'pickContact'
+    },
+
+    initialize: function () {
+        console.log('Initializing Send View');
+        this.render();
+    },
+
+    render: function () {
+        $(this.el).html(this.template());
+        return this;
+    },
+
+    pickContact: function () {
+        console.log("chooseContact launched.")
+        navigator.contacts.chooseContact(function (id) {
+            console.log("chooseContact returned: " + id);
+            if (id > 0) {
+                var options = new ContactFindOptions();
+                options.filter = "" + id;
+                navigator.contacts.find(["id", "displayName"], this.findContactSuccess(), this.findContactFailure(), options);
+            }
+        }, null);
+    },
+
+    findContactSuccess: function (contacts) {
+        if (contacts.length != 1) {
+            findContactFailure("find by id returned " + contacts.length + " contacts");
+        }
+        else {
+            $('#contactName').val(contacts[0].displayName);
+        }
+    },
+
+    findContactFailure: function (maybeAnErrorMessage) {
+        alert("find failure " + maybeAnErrorMessage);
+    },
+
+    submit: function (e) {
+
+        this.model.create({
+            thanker: 'Augustin',
+            thankee: $('#name').val(),
+            reason: $('#reason').val(),
+            tags: $('#tags').val()
+        });
+
+        $('#name').val('');
+        $('#reason').val('');
+        $('#tags').val('');
+
+        $('#message').show().html("Thank you sent!");
+    }
+
+});
+
+
+
+
+
+//************************Profile View*************************//
 window.ProfileView = Backbone.View.extend({
 
 
@@ -65,6 +133,10 @@ window.ProfileView = Backbone.View.extend({
 
 });
 
+
+
+
+//************************Search View*************************//
 window.SearchView = Backbone.View.extend({
 
     events: {
@@ -78,10 +150,10 @@ window.SearchView = Backbone.View.extend({
 
     render: function (data) {
         $(this.el).html(this.template());
-        //if (data) {
-        //    this.listView = new ThankYouListView({ el: $('ul', this.el), model: data });
-        //    this.listView.render();
-        //}
+        if (data) {
+            this.listView = new ThankYouListView({ el: $('ul', this.el), model: data });
+            this.listView.render();
+        }
         return this;
     },
 
@@ -89,19 +161,16 @@ window.SearchView = Backbone.View.extend({
         var key = $('.search-key').val();
         var results = [];
         
-        
-        /*var thankyous = this.model.models;
+        var thankyous = this.model.models;
 
         _.each(thankyous, function (thankyou) {
             if (thankyou.get("thankee").toLowerCase().indexOf(key.toLowerCase()) >= 0) {
                 results.push(thankyou);
             }
         });
-        */
-
-        //$('#myList').html('');
-        //{ el: $('#myList', this.el), model: results }
-        this.listView = new ThankYouListView();
+        
+        $('#myList').html('');
+        this.listView = new ThankYouListView({ el: $('#myList', this.el), model: results });
         this.listView.render();
 
     }
@@ -109,7 +178,9 @@ window.SearchView = Backbone.View.extend({
 });
 
 
-// Thankyou Views
+
+
+//************************Thankyou Views*************************//
 window.ThankYouListView = Backbone.View.extend({
 
     tagName: 'div',
@@ -131,7 +202,7 @@ window.ThankYouListView = Backbone.View.extend({
 window.ThankYouListItemView = Backbone.View.extend({
 
     render: function () {
-        console.log(this.model.toJSON());
+        //console.log(this.model.toJSON());
         $(this.el).html(this.template(this.model.toJSON()));
         return this;
     }
@@ -149,63 +220,3 @@ window.ThankYouDetailsView = Backbone.View.extend({
 
 });
 
-//Send Views
-window.SendView = Backbone.View.extend({
-
-    events: {
-        'click #save': 'submit',
-        'click #pickContact': 'pickContact'
-    },
-
-    initialize: function () {
-        console.log('Initializing Send View');
-        this.render();
-    },
-
-    render: function () {
-        $(this.el).html(this.template());
-        return this;
-    },
-
-    pickContact: function (){
-        console.log("chooseContact launched.")
-        navigator.contacts.chooseContact(function(id){
-            console.log("chooseContact returned: " + id);
-            if(id > 0) {
-                var options = new ContactFindOptions();
-                options.filter = "" + id;
-                navigator.contacts.find(["id", "displayName"], this.findContactSuccess(), this.findContactFailure(), options);
-            }
-        }, null);
-    },
-
-    findContactSuccess: function(contacts) {
-        if(contacts.length != 1) {
-          findContactFailure("find by id returned " + contacts.length + " contacts");
-        }
-        else {
-          $('#contactName').val(contacts[0].displayName);
-        }
-    },
-
-    findContactFailure: function(maybeAnErrorMessage) {
-        alert("find failure " + maybeAnErrorMessage);
-    },
-
-    submit: function (e) {
-
-        this.model.create({
-            thanker: 'Augustin',
-            thankee: $('#name').val(),
-            reason: $('#reason').val(),
-            tags: $('#tags').val()
-        });
-
-        $('#name').val('');
-        $('#reason').val('');
-        $('#tags').val('');
-
-        $('#message').show().html("Thank you sent!");
-    }
-
-});

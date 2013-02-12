@@ -1,5 +1,6 @@
+
 window.ThankYou = Backbone.Model.extend({
-    urlRoot: "/thank-yous",
+    urlRoot: "http://stormy-savannah-7720.herokuapp.com/thank-yous",
     defaults: {
         id: null,
         thanker: "thanker",
@@ -11,15 +12,15 @@ window.ThankYou = Backbone.Model.extend({
 
 window.ThankYouCollection = Backbone.Collection.extend({
     model: ThankYou,
-    url: "/thank-yous"
+    url: "http://stormy-savannah-7720.herokuapp.com/thank-yous"
 });
 
 window.Profile = Backbone.Model.extend({
-    urlRoot: "http://badasses.herokuapp.com/users",
+    urlRoot: "http://stormy-savannah-7720.herokuapp.com/users",
     defaults: {
         id: null,
         username: "betaTester",
-        name: "Beta Tester",
+        displayName: "Beta Tester",
         email: "beta@tester.com"
     }
 });
