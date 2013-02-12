@@ -168,17 +168,14 @@ window.SendView = Backbone.View.extend({
     },
 
     pickContact: function (){
-        navigator.contacts.chooseContact(pickContactSuccess, []);
-    },
-
-    pickContactSuccess: function(id) {
-
-        if(id > 0) {
-          var options = new ContactFindOptions();
-          options.filter = "" + id;
-          navigator.contacts.find(["id", "displayName"], findContactSuccess, findContactFailure, options);
-        }
-
+        console.log("chooseContact launched.")
+        navigator.contacts.chooseContact(function(id){
+            if(id > 0) {
+                var options = new ContactFindOptions();
+                options.filter = "" + id;
+                navigator.contacts.find(["id", "displayName"], this.findContactSuccess(), this.findContactFailure(), options);
+            }
+        }, []);
     },
 
     findContactSuccess: function(contacts) {

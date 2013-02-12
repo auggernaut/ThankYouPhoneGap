@@ -77,7 +77,6 @@ body {
     }
 
 .small {
-    width: 25%;
     padding: 3px 7px;
     font-size: 15px;
     margin: 0px;
@@ -509,6 +508,10 @@ form {
     margin: 20px;
 }
 
+#form {
+    margin: 20px;
+}
+
 #home {
     text-align: center;
 }
@@ -557,12 +560,15 @@ footer {
 
 h2 {
     color: white;
-    margin-bottom: 10px;
+    margin: 20px 0px;
     font-family: "Museo";
     font-size: 25px;
     text-shadow: 0 0 10px #000, 0 0 20px #000;
 }
 
+.control-group{
+    margin-top: 20px;
+}
 
 .profile {
     color: #fff;
