@@ -176,7 +176,7 @@ window.SendView = Backbone.View.extend({
                 options.filter = "" + id;
                 navigator.contacts.find(["id", "displayName"], this.findContactSuccess(), this.findContactFailure(), options);
             }
-        }, []);
+        }, null);
     },
 
     findContactSuccess: function(contacts) {
