@@ -89,7 +89,7 @@ window.SearchView = Backbone.View.extend({
         var key = $('.search-key').val();
         var results = [];
         
-
+        
         /*var thankyous = this.model.models;
 
         _.each(thankyous, function (thankyou) {
@@ -153,7 +153,8 @@ window.ThankYouDetailsView = Backbone.View.extend({
 window.SendView = Backbone.View.extend({
 
     events: {
-        'click #save': 'submit'
+        'click #save': 'submit',
+        'click #pickContact': 'pickContact'
     },
 
     initialize: function () {
@@ -164,6 +165,33 @@ window.SendView = Backbone.View.extend({
     render: function () {
         $(this.el).html(this.template());
         return this;
+    },
+
+    pickContact: function (){
+        navigator.contacts.chooseContact(pickContactSuccess, []);
+    },
+
+    pickContactSuccess: function(id) {
+
+        if(id > 0) {
+          var options = new ContactFindOptions();
+          options.filter = "" + id;
+          navigator.contacts.find(["id", "displayName"], findContactSuccess, findContactFailure, options);
+        }
+
+    },
+
+    findContactSuccess: function(contacts) {
+        if(contacts.length != 1) {
+          findContactFailure("find by id returned " + contacts.length + " contacts");
+        }
+        else {
+          $('#contactName').val(contacts[0].displayName);
+        }
+    },
+
+    findContactFailure: function(maybeAnErrorMessage) {
+        alert("find failure " + maybeAnErrorMessage);
     },
 
     submit: function (e) {

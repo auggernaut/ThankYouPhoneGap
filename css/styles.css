@@ -76,6 +76,13 @@ body {
         -webkit-box-shadow: inset rgba(207,207,255,0.75) 0px 1px 1px;
     }
 
+.small {
+    width: 25%;
+    padding: 3px 7px;
+    font-size: 15px;
+    margin: 0px;
+}
+
 #message {
     text-align: center;
     font-family: "Museo";
@@ -539,7 +546,6 @@ footer {
 
 #logout {
     font-family: "Museo";
-    color: white;
     text-decoration: none;
     font-size: 20px;
     font-weight: bold;
