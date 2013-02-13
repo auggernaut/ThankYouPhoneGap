@@ -39,7 +39,7 @@ window.Router = Backbone.Router.extend({
         });
 
         // Check of browser supports touch events...
-        if (document.documentElement.hasOwnProperty('ontouchstart')) {
+        /*if (document.documentElement.hasOwnProperty('ontouchstart')) {
             // ... if yes: register touch event listener to change the "selected" state of the item
             $('#content').on('touchstart', 'a', function (event) {
                 self.selectItem(event);
@@ -55,17 +55,17 @@ window.Router = Backbone.Router.extend({
             $('#content').on('mouseup', 'a', function (event) {
                 self.deselectItem(event);
             });
-        }
+        }*/
 
     },
-
+    /*
     selectItem: function (event) {
         $(event.target).addClass('tappable-active');
     },
 
     deselectItem: function (event) {
         $(event.target).removeClass('tappable-active');
-    },
+    },*/
 
     home: function () {
 
@@ -115,7 +115,7 @@ window.Router = Backbone.Router.extend({
         thankYouList.fetch({
             success: function () {
 
-                self.slidePage(new ProfileView({ model: thankYouList, profile: profile }));
+                self.slidePage(new ProfileView({ model: thankYouList }));
 
             }
         });

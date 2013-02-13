@@ -85,13 +85,13 @@ window.SendView = Backbone.View.extend({
     submit: function (e) {
 
         this.model.create({
-            thanker: 'Augustin',
-            thankee: $('#name').val(),
+            thanker: profile.id,
+            thankee: $('#thankee').val(),
             reason: $('#reason').val(),
             tags: $('#tags').val()
         });
 
-        $('#name').val('');
+        $('#thankee').val('');
         $('#reason').val('');
         $('#tags').val('');
 
@@ -115,7 +115,7 @@ window.ProfileView = Backbone.View.extend({
 
     render: function () {
         var thankyous = this.model.models;
-        var profile = this.options.profile;
+        //var profile = this.options.profile;
         
         $(this.el).html(this.template(profile.toJSON()));
 
