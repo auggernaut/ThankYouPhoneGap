@@ -18,15 +18,15 @@ window.HomeView = Backbone.View.extend({
     },
 
     logout: function () {
-/*
-        $.ajax({
-            type: 'POST',
-            url: 'http://localhost:2403/users/logout',
-            success: function (data) {
-                window.location.replace("/index.html");
-            }
-        });
-*/
+        /*
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:2403/users/logout',
+                    success: function (data) {
+                        window.location.replace("/index.html");
+                    }
+                });
+        */
         //dpd.users.logout(function (result, error) {
         //    window.location.replace("/index.html");
         //});
@@ -95,7 +95,16 @@ window.SendView = Backbone.View.extend({
         $('#reason').val('');
         $('#tags').val('');
 
-        $('#message').show().html("Thank you sent!");
+        //$('#message').show().html("Thank you sent!");
+
+        navigator.notification.alert(
+            'Thank you sent!',  // message
+            function () {
+                window.location.replace("/index.html");
+            },         // callback
+            'Success',            // title
+            'Ok'                  // buttonName
+        );
     }
 
 });
@@ -116,7 +125,7 @@ window.ProfileView = Backbone.View.extend({
     render: function () {
         var thankyous = this.model.models;
         //var profile = this.options.profile;
-        
+
         $(this.el).html(this.template(profile.toJSON()));
 
         _.each(thankyous, function (thankyou) {
@@ -126,8 +135,9 @@ window.ProfileView = Backbone.View.extend({
             else if (profile.id == thankyou.get("thankee"))
                 $('.thankyous-received', this.el).append(new ThankYouListItemView({ model: thankyou }).render().el);
 
+
         }, this);
-        
+
         return this;
     }
 
@@ -160,7 +170,7 @@ window.SearchView = Backbone.View.extend({
     search: function (event) {
         var key = $('.search-key').val();
         var results = [];
-        
+
         var thankyous = this.model.models;
 
         _.each(thankyous, function (thankyou) {
@@ -168,7 +178,7 @@ window.SearchView = Backbone.View.extend({
                 results.push(thankyou);
             }
         });
-        
+
         $('#myList').html('');
         this.listView = new ThankYouListView({ el: $('#myList', this.el), model: results });
         this.listView.render();
