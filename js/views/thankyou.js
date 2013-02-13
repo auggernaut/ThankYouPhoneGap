@@ -60,7 +60,6 @@ window.SendView = Backbone.View.extend({
     pickContact: function () {
         console.log("chooseContact launched.")
         navigator.contacts.chooseContact(function (id) {
-            console.log("chooseContact returned: " + id);
             if (id > 0) {
                 var options = new ContactFindOptions();
                 options.filter = "" + id;
@@ -74,7 +73,7 @@ window.SendView = Backbone.View.extend({
             findContactFailure("find by id returned " + contacts.length + " contacts");
         }
         else {
-            $('#contactName').val(contacts[0].displayName);
+            $('#thankee').val(contacts[0].displayName);
         }
     },
 
