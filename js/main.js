@@ -15,9 +15,8 @@ window.Router = Backbone.Router.extend({
 
         var self = this;
 
-        //this.footerView = new FooterView();
-        //$('#footer').html(this.footerView.render().el);
-        //console.log("dpd.users: " + dpd.users);
+        // to use that code from an app, you need to add:
+
 
         //AUTH
         var prof = new Profile({ id: 'cb38d97a895cd85b' });

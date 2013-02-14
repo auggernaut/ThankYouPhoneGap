@@ -95,15 +95,18 @@ window.SendView = Backbone.View.extend({
         $('#tags').val('');
 
         //$('#message').show().html("Thank you sent!");
-
+/*
         navigator.notification.alert(
             'Thank you sent!',  // message
             function () {
-                window.location.replace("/index.html");
+                return;
             },         // callback
             'Success',            // title
             'Ok'                  // buttonName
         );
+*/
+
+        remoteStorage.addThankYou(this.model.toJSON());
     }
 
 });
