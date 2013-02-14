@@ -1,32 +1,37 @@
-remoteStorage.defineModule('thankyous', function(privateClient, publicClient){
+remoteStorage.defineModule('semanticcurrency', function (privateClient, publicClient) {
 
-	function nameToKey(name) {
-    return name.replace(/\s/, '-');
-  }
-
-  return {
-    exports: {
-
-      addThankYou: function(name) {
-        privateClient.storeObject('thankyous', nameToKey(name), {
-          name: name
-         });
-      },
-
-      publishThankYou: function(name) {
-        var key = nameToKey(name);
-        var thankyou = privateClient.getObject(key);
-        publicClient.storeObject('thankyous', key, thankyou);
-      }
+    function getHash(object) {
+        var shaObj = new jsSHA(JSON.stringify(object), "TEXT");
+        return shaObj.getHash("SHA-384", "HEX");
     }
-  }
+
+    function ThankYou(object) {
+        this.thankee = object.thankee;
+        this.thankor = object.thanker;
+        this.reason = object.reason;
+        this.tags = object.tags;
+    }
+
+    return {
+        exports: {
+            getThankYous: function () {
+                console.log("in getThankYous, calling getAll");
+                return privateClient.getAll("thankyous/");
+            },
+            addThankYou: function (object) {
+                console.log("in addThankYou, calling storeObject");
+                var ty = new ThankYou(object);
+                privateClient.storeObject('thankyou', 'thankyous/' + getHash(ty), ty);
+            }
+        }
+    }
 });
 
-        remoteStorage.claimAccess('thankyous', 'rw').then(function(){
-        	remoteStorage.displayWidget('remotestorage-connect');
-        });
-        //remoteStorage.getClaimedModuleList());
-        
+remoteStorage.claimAccess('semanticcurrency', 'rw').then(function () {
+    remoteStorage.displayWidget('remotestorage-connect');
+});
+//remoteStorage.getClaimedModuleList());
+
 
 
 

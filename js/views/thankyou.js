@@ -83,20 +83,22 @@ window.SendView = Backbone.View.extend({
 
     submit: function (e) {
 
+        
         this.model.create({
             thanker: profile.id,
             thankee: $('#thankee').val(),
             reason: $('#reason').val(),
             tags: $('#tags').val()
         });
+        
 
         $('#thankee').val('');
         $('#reason').val('');
         $('#tags').val('');
 
-        //$('#message').show().html("Thank you sent!");
-/*
-        navigator.notification.alert(
+        $('#message').show().html("Thank you sent!");
+
+        /*navigator.notification.alert(
             'Thank you sent!',  // message
             function () {
                 return;
@@ -104,9 +106,10 @@ window.SendView = Backbone.View.extend({
             'Success',            // title
             'Ok'                  // buttonName
         );
-*/
+        */
 
-        remoteStorage.addThankYou(this.model.toJSON());
+
+        remoteStorage.semanticcurrency.addThankYou(this.model.toJSON()[0]);
     }
 
 });
@@ -126,12 +129,15 @@ window.ProfileView = Backbone.View.extend({
 
     render: function () {
         var thankyous = this.model.models;
-        //var profile = this.options.profile;
+        remoteStorage.semanticcurrency.getThankYous().then(
+            function (tys) {
+                console.log(tys);
+            });
 
         $(this.el).html(this.template(profile.toJSON()));
 
         _.each(thankyous, function (thankyou) {
-            //console.log(thankyou.get("thanker"));
+
             if (profile.id == thankyou.get("thanker"))
                 $('.thankyous-sent', this.el).append(new ThankYouListItemView({ model: thankyou }).render().el);
             else if (profile.id == thankyou.get("thankee"))
