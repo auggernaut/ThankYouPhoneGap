@@ -7,7 +7,7 @@ remoteStorage.defineModule('semanticcurrency', function (privateClient, publicCl
 
     function ThankYou(object) {
         this.thankee = object.thankee;
-        this.thankor = object.thanker;
+        this.thanker = object.thanker;
         this.reason = object.reason;
         this.tags = object.tags;
     }
