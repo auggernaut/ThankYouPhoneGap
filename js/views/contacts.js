@@ -20,7 +20,7 @@
     findContacts: function(){
         var contactFields = ['*'];
         var findOptions = {
-            filter: "",
+            filter: "augustin",
             multiple: true
         };
 
