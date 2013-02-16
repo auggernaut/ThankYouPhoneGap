@@ -44,7 +44,8 @@ window.SendView = Backbone.View.extend({
 
     events: {
         'click #save': 'submit',
-        'click #pickContact': 'pickContact'
+        // 'click #pickContact': 'pickContact'
+        "keyup .contact-key": "findContact"
     },
 
     initialize: function () {
@@ -57,7 +58,7 @@ window.SendView = Backbone.View.extend({
         return this;
     },
 
-    pickContact: function () {
+ /*   pickContact: function () {
         console.log("chooseContact launched.")
         navigator.contacts.chooseContact(function (id) {
             if (id > 0) {
@@ -66,6 +67,22 @@ window.SendView = Backbone.View.extend({
                 navigator.contacts.find(["id", "displayName"], this.findContactSuccess(), this.findContactFailure(), options);
             }
         }, null);
+    },
+    */
+
+    findContact: function(){
+        var fields = ['*'];
+        var options = {
+            filter: $('.contacts-key').val(),
+            multiple: true
+        };
+
+        navigator.contacts.find(fields, function (contacts) {
+            $('#contacts').val(contacts);
+        }, function (error) {
+            this.findContactFailure(error);
+        },
+        options);
     },
 
     findContactSuccess: function (contacts) {
@@ -98,7 +115,7 @@ window.SendView = Backbone.View.extend({
 
         $('#message').show().html("Thank you sent!");
 
-        /*navigator.notification.alert(
+        navigator.notification.alert(
             'Thank you sent!',  // message
             function () {
                 return;
@@ -106,9 +123,7 @@ window.SendView = Backbone.View.extend({
             'Success',            // title
             'Ok'                  // buttonName
         );
-        */
-
-
+        
         remoteStorage.semanticcurrency.addThankYou(this.model.toJSON()[0]);
     }
 

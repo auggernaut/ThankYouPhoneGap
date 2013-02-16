@@ -24,5 +24,7 @@
     <feature name="http://api.phonegap.com/2.3.0/media"/>
     <feature name="http://api.phonegap.com/2.3.0/network"/>
     <feature name="http://api.phonegap.com/2.3.0/notification"/>
+
+    <!--<plugin name="Contacts" value="CDVContacts" />-->
  
 </widget>
