@@ -148,7 +148,7 @@ window.Router = Backbone.Router.extend({
 });
 
 //templateLoader function defined in utils.js
-templateLoader.load(["HomeView", "AboutView", "SendView", "SearchView", "ContactsView", "ThankYouDetailsView", "ThankYouListItemView", "ProfileView"],
+templateLoader.load(["HomeView", "AboutView", "SendView", "SearchView", "ContactsView", "ContactItemView", "ThankYouDetailsView", "ThankYouListItemView", "ProfileView"],
     function () {
         app = new Router();
         Backbone.history.start();
