@@ -82,6 +82,7 @@ body {
     font-size: 15px;
     margin: 0px;
     width: 95%;
+    text-decoration:none;
 }
 
 #message {

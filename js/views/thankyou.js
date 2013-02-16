@@ -44,8 +44,8 @@ window.SendView = Backbone.View.extend({
 
     events: {
         'click #save': 'submit',
-        // 'click #pickContact': 'pickContact'
-        "keyup .contact-key": "findContact"
+        //'click #pickContact': 'pickContact'
+        //'keyup .contact-key': 'findContact'
     },
 
     initialize: function () {
@@ -56,46 +56,6 @@ window.SendView = Backbone.View.extend({
     render: function () {
         $(this.el).html(this.template());
         return this;
-    },
-
- /*   pickContact: function () {
-        console.log("chooseContact launched.")
-        navigator.contacts.chooseContact(function (id) {
-            if (id > 0) {
-                var options = new ContactFindOptions();
-                options.filter = "" + id;
-                navigator.contacts.find(["id", "displayName"], this.findContactSuccess(), this.findContactFailure(), options);
-            }
-        }, null);
-    },
-    */
-
-    findContact: function(){
-        var fields = ['*'];
-        var options = {
-            filter: $('.contacts-key').val(),
-            multiple: true
-        };
-
-        navigator.contacts.find(fields, function (contacts) {
-            $('#contacts').val(contacts);
-        }, function (error) {
-            this.findContactFailure(error);
-        },
-        options);
-    },
-
-    findContactSuccess: function (contacts) {
-        if (contacts.length != 1) {
-            findContactFailure("find by id returned " + contacts.length + " contacts");
-        }
-        else {
-            $('#thankee').val(contacts[0].displayName);
-        }
-    },
-
-    findContactFailure: function (maybeAnErrorMessage) {
-        alert("find failure " + maybeAnErrorMessage);
     },
 
     submit: function (e) {
