@@ -28,6 +28,7 @@
     },
 
     findContactSuccess: function (contacts) {
+        console.log(contacts);
         if (contacts.length != 1) {
 
             _.each(contacts, function (contact) {

@@ -127,6 +127,25 @@ window.ProfileView = Backbone.View.extend({
 });
 
 
+//************************Setttings View*************************//
+window.SettingsView = Backbone.View.extend({
+
+
+    initialize: function () {
+        console.log('Initializing SettingsView');
+        this.render();
+    },
+
+    render: function () {
+
+        $(this.el).html(this.template());
+
+        return this;
+    }
+
+});
+
+
 
 
 //************************Search View*************************//

@@ -9,6 +9,7 @@ window.Router = Backbone.Router.extend({
         "profile": "profile",
         "search": "search",
         "contacts": "contacts",
+        "settings": "settings",
         "thankyous/:id": "thankyouDetails"
     },
 
@@ -96,6 +97,11 @@ window.Router = Backbone.Router.extend({
         this.slidePage(new ContactsView());
     },
 
+    settings: function () {
+        this.slidePage(new SettingsView());
+    },
+
+
     slidePage: function (page) {
         var slideFrom,
             self = this;
@@ -140,15 +146,12 @@ window.Router = Backbone.Router.extend({
             $(page.el).attr('class', 'page stage-center transition');
             self.currentPage = page;
         });
-
-
-
     }
 
 });
 
 //templateLoader function defined in utils.js
-templateLoader.load(["HomeView", "AboutView", "SendView", "SearchView", "ContactsView", "ContactItemView", "ThankYouDetailsView", "ThankYouListItemView", "ProfileView"],
+templateLoader.load(["HomeView", "AboutView", "SendView", "SearchView", "ContactsView", "ContactItemView", "ThankYouDetailsView", "ThankYouListItemView", "ProfileView", "SettingsView"],
     function () {
         app = new Router();
         Backbone.history.start();
